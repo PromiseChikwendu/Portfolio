@@ -18,11 +18,12 @@
         <li><a href="#projects">Projects</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
+      <button id="theme-toggle" class="btn-primary">Dark Mode</button>
     </nav>
   </header>
 
   <!-- Hero Section -->
-  <section id="hero">
+  <section id="hero" class="fade-in">
     <div class="hero-content">
       <h1>Hi, I'm Promise 👋</h1>
       <p>A Backend Developer & Content Creator</p>
@@ -31,31 +32,34 @@
   </section>
 
   <!-- About Section -->
-  <section id="about">
+  <section id="about" class="fade-in">
     <h2>About Me</h2>
     <p>
-      I'm a passionate backend engineer with experience in building scalable web applications and systems. I love transforming ideas into reality using clean code.
+      I'm Promise Chikwendu, a backend developer passionate about building scalable apps using Node.js, Python, and MongoDB. I'm also a content creator who enjoys simplifying tech for others.
     </p>
   </section>
 
   <!-- Projects Section -->
-  <section id="projects">
+  <section id="projects" class="fade-in">
     <h2>Projects</h2>
     <div class="project-list">
-      <!-- Sample project cards -->
       <div class="project-card">
-        <h3>TetFund Database System</h3>
-        <p>Project management and fund tracking system for educational institutions.</p>
+        <h3>Ninatribe</h3>
+        <p>An e-commerce site I helped build to increase brand visibility and user experience.</p>
       </div>
       <div class="project-card">
-        <h3>Photography Website</h3>
-        <p>Gallery and booking platform for creative photographers.</p>
+        <h3>TetFund System</h3>
+        <p>A platform to manage fund allocation, project tracking, and reporting for FEDPODAM.</p>
+      </div>
+      <div class="project-card">
+        <h3>Photography Portfolio Site</h3>
+        <p>A website for showcasing gallery photos and handling bookings using HTML, CSS, and Firebase.</p>
       </div>
     </div>
   </section>
 
   <!-- Contact Section -->
-  <section id="contact">
+  <section id="contact" class="fade-in">
     <h2>Contact Me</h2>
     <form class="contact-form">
       <input type="text" placeholder="Your Name" required />
@@ -70,5 +74,29 @@
     <p>&copy; 2025 Promise Chikwendu. All rights reserved.</p>
   </footer>
 
+  <!-- JavaScript -->
+  <script>
+    const toggleBtn = document.getElementById("theme-toggle");
+    toggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      toggleBtn.textContent = document.body.classList.contains("dark") ? "Light Mode" : "Dark Mode";
+    });
+
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px"
+    };
+    const appearOnScroll = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      });
+    }, appearOptions);
+    faders.forEach(fader => appearOnScroll.observe(fader));
+  </script>
+
 </body>
-</html>
+  </html>
+  

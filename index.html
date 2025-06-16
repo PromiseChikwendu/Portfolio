@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Promise Chikwendu | Portfolio</title>
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -23,11 +24,13 @@
   </header>
 
   <!-- Hero Section -->
-  <section id="hero" class="fade-in">
+  <section id="hero" class="hero-section fade-in">
+    <div class="hero-blob"></div>
     <div class="hero-content">
-      <h1>Hi, I'm Promise 👋</h1>
-      <p>A Backend Developer & Content Creator</p>
-      <a href="#contact" class="btn-primary">Get in Touch</a>
+      <img src="https://via.placeholder.com/150" alt="Promise Profile" class="hero-image">
+      <h1 class="typewriter">Hi, I'm Promise 👋</h1>
+      <p class="fade-in">A Backend Developer & Content Creator</p>
+      <a href="#contact" class="btn-primary fade-in">Get in Touch</a>
     </div>
   </section>
 
@@ -82,6 +85,7 @@
       toggleBtn.textContent = document.body.classList.contains("dark") ? "Light Mode" : "Dark Mode";
     });
 
+    // Scroll Reveal
     const faders = document.querySelectorAll('.fade-in');
     const appearOptions = {
       threshold: 0.1,
@@ -95,6 +99,20 @@
       });
     }, appearOptions);
     faders.forEach(fader => appearOnScroll.observe(fader));
+
+    // Typewriter Effect
+    const typeText = document.querySelector(".typewriter");
+    const text = typeText.textContent;
+    typeText.textContent = "";
+    let idx = 0;
+    function type() {
+      if (idx < text.length) {
+        typeText.textContent += text.charAt(idx);
+        idx++;
+        setTimeout(type, 80);
+      }
+    }
+    window.addEventListener('DOMContentLoaded', type);
   </script>
 
 </body>
